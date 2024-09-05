@@ -10,3 +10,4 @@ resources:
   - route.yaml
   - app-sa.yaml
   - es-kubeconfig.yaml
+  - configmap.yaml

@@ -1,0 +1,6 @@
+apiVersion: v1
+data:
+  namespaces: nodejs-dev-gitlab-03-develop
+kind: ConfigMap
+metadata:
+  name: ns-env
