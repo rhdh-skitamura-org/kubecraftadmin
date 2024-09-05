@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{ values.app_name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${{ values.app_name }}
+  template:
+    metadata:
+      labels:
+        app: ${{ values.app_name }}
+    spec:
+      containers:
+      - name: ${{ values.app_name }}
+        image: ___IMAGE_URL___@___IMAGE_DIGEST___ 
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: ns-env
+        volumeMounts:
+        - name: kubeconfig-volume
+          mountPath: "/.kube/config"
+          subPath: "config"
+      volumes:
+      - name: kubeconfig-volume
+        secret:
+          secretName: kubeconfig
+      serviceAccountName: ${{ values.app_name }}-sa
