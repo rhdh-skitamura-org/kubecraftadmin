@@ -237,7 +237,6 @@ spec:
         description: ${{ parameters.app_name }} image
         #token: ${{ parameters.quay_token }}
         namespace: skitamura-quay-org
-        token: qiANxSr7qHAigRcwgEhYdZ1967FwtvRxBm0kukQB
         baseUrl: http://quay-registry-quay-app.quay.svc
 
   output:
