@@ -47,10 +47,6 @@ spec:
           title: Cluster URL
           type: string
           default: "apps.rosa.rosa-hcp-1544.kfnj.p3.openshiftapps.com"
-        quay_token:
-          type: string
-          ui:widget: hidden
-          default: "${{ secrets.QUAY_USER_TOKEN }}"
         sonarqube_username:
           type: string
           ui:widget: hidden
@@ -231,18 +227,6 @@ spec:
         branch: main
         username: ${{ parameters.sonarqube_username }}
         password: ${{ parameters.sonarqube_password }}
-
-    - id: create-quay-repository
-      name: Create Quay Repository
-      action: quay:create-repository
-      input:
-        name: ${{ parameters.app_name }}-develop/${{ parameters.app_name }}-record
-        visibility: private
-        description: ${{ parameters.app_name }} image
-        #token: ${{ parameters.quay_token }}
-        token: ${{ env.QUAY_USER_TOKEN }}
-        namespace: skitamura-quay-org
-        baseUrl: http://quay-registry-quay-app.quay.svc
 
   output:
     links:
