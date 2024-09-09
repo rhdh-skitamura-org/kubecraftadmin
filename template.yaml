@@ -239,7 +239,8 @@ spec:
         name: ${{ parameters.app_name }}-develop/${{ parameters.app_name }}-record
         visibility: private
         description: ${{ parameters.app_name }} image
-        token: ${{ parameters.quay_token }}
+        #token: ${{ parameters.quay_token }}
+        token: ${{ env.QUAY_USER_TOKEN }}
         namespace: skitamura-quay-org
         baseUrl: http://quay-registry-quay-app.quay.svc
 
